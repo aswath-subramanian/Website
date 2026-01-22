@@ -1,0 +1,53 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # --- Build logic (this is your "process") ---
+
+    - name: Cache bust assets
+      run: |
+        HASH=$(git rev-parse --short HEAD)
+        sed -i "s/css\/main.css/css\/main.css?v=$HASH/g" src/index.html
+        sed -i "s/js\/main.js/js\/main.js?v=$HASH/g" src/index.html
+
+    - name: Basic HTML validation
+      run: |
+        sudo apt-get install -y tidy
+        tidy -qe src/index.html || true
+
+    # (Later you can add: image compression, link checking, etc.)
+
+    # --- Package artifact for GitHub Pages ---
+
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: src/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

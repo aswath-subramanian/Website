@@ -83,6 +83,10 @@ li::before {
   border-left: 2px solid transparent;
 }
 
+.work-item p:last-child {
+  font-weight: 500;
+}
+
 .work-item:hover {
   border-left: 2px solid var(--accent);
 }

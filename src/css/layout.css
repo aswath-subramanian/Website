@@ -4,6 +4,15 @@
   padding: 0 24px;
 }
 
+.site-frame {
+  background: var(--bg);     
+  max-width: 1100px;
+  margin: 0 auto;
+  min-height: 100vh;
+  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+}
+
 section {
   padding: 80px 0;
   border-bottom: 1px solid #e5e5e5;
@@ -12,6 +21,7 @@ section {
 header.hero {
   padding: 140px 0 100px;
   border-bottom: 1px solid #e5e5e5;
+  scroll-margin-top: 90px;
 }
 
 footer {
@@ -34,4 +44,21 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
+}
+
+@media (max-width: 600px) {
+  .nav-inner {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+  .nav-links {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+  .nav-links a {
+    margin-left: 0;
+  }
 }

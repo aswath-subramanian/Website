@@ -1,34 +1,47 @@
+/* Content width limiter.
+   Keeps text readable on all screen sizes. */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 24px;
 }
 
+/* The "document slab".
+   Creates a bounded page inside the browser window,
+   giving the site a physical, editorial feel. */
 .site-frame {
-  background: var(--bg);     
+  background: white;
   max-width: 1100px;
   margin: 0 auto;
   min-height: 100vh;
-  border-left: 1px solid #e5e5e5;
-  border-right: 1px solid #e5e5e5;
+  box-shadow: 0 0 0 1px #e5e5e5;
 }
 
+/* Global section rhythm.
+   Enforces consistent vertical spacing between content blocks. */
 section {
   padding: 80px 0;
   border-bottom: 1px solid #e5e5e5;
 }
 
+/* Hero spacing.
+   Extra top padding accounts for fixed navigation bar.
+   scroll-margin-top ensures anchor links land below nav. */
 header.hero {
-  padding: 140px 0 100px;
+  padding: 100px 0 80px;
   border-bottom: 1px solid #e5e5e5;
   scroll-margin-top: 90px;
 }
 
+/* Footer spacing and alignment */
 footer {
   padding: 60px 0;
   text-align: center;
 }
 
+/* Fixed top navigation.
+   Stays visible while scrolling.
+   Slight transparency keeps content visible underneath. */
 .nav {
   position: fixed;
   top: 0;
@@ -39,6 +52,8 @@ footer {
   z-index: 100;
 }
 
+/* Navigation inner layout.
+   Uses flexbox to separate name (left) and links (right). */
 .nav-inner {
   display: flex;
   justify-content: space-between;
@@ -46,18 +61,24 @@ footer {
   padding: 16px 24px;
 }
 
+/* Mobile navigation behaviour.
+   Stacks name and links vertically for narrow screens. */
 @media (max-width: 600px) {
   .nav-inner {
     flex-direction: column;
     gap: 12px;
     padding: 12px;
   }
+
+  /* Distribute nav links evenly across width */
   .nav-links {
     width: 100%;
     display: flex;
     justify-content: space-between;
     font-size: 14px;
   }
+
+  /* Remove desktop spacing on mobile */
   .nav-links a {
     margin-left: 0;
   }

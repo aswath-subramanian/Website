@@ -100,3 +100,29 @@ li::before {
   max-width: 100%;
   margin-top: 24px;
 }
+
+.contact-icons {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.contact-item svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--muted);
+}
+
+.contact-item:hover svg {
+  fill: var(--accent);
+}

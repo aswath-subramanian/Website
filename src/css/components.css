@@ -52,6 +52,15 @@ section ul li::before {
   color: var(--muted);
 }
 
+#who ul li {
+  margin-bottom: 12px;
+  padding-left: 8px;
+}
+
+#who ul li::marker {
+  color: var(--accent);
+}
+
 /* =========================================================
    BUTTONS & INLINE ACTIONS
    ========================================================= */

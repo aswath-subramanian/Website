@@ -152,6 +152,7 @@ section ul li::before {
   font-size: 21px;
   font-weight: 600;
   margin-bottom: 20px;
+  margin-left: var(--label-width); /* align title with body text column */
 }
 
 /* Row layout for label + text */
@@ -163,7 +164,7 @@ section ul li::before {
 
 /* Metadata label */
 .label {
-  width: 110px;
+  width: var(--label-width);
   flex-shrink: 0;
   font-size: 13px;
   font-weight: 600;

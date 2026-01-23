@@ -10,6 +10,7 @@
   --accent-soft: #10B981; /*Secondary accent tone*/
   --risk: #F59E0B;  /* Reserved for warnings / constraints */
   --max-width: 730px; /* Ideal reading width for long-form text */
+  --label-width: 110px;
 }
 
 /* Global reset.

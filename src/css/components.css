@@ -75,7 +75,8 @@ section ul li::before {
 }
 
 .btn:hover {
-  background: var(--accent);    /* Primary interaction feedback */
+  background: var(--accent); /* Primary interaction feedback */
+  color: white;   
 }
 
 .jump-link {

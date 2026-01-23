@@ -6,7 +6,8 @@
   --bg: #f0f2f5;     /* Global environment (outside the document slab) */
   --text: #111;     /* Primary text colour */
   --muted: #666;    /* Secondary / de-emphasised text */
-  --accent: #10B981;/* Positive action / highlight colour */
+  --accent: #059669;/* Positive action / highlight colour */
+  --accent-soft: #10B981; /*Secondary accent tone*/
   --risk: #F59E0B;  /* Reserved for warnings / constraints */
   --max-width: 730px; /* Ideal reading width for long-form text */
 }
@@ -49,6 +50,7 @@ a {
 /* Hover state for links */
 a:hover {
   color: var(--accent);
+  text-decoration: underline;
 }
 
 /* Utility class for secondary text */

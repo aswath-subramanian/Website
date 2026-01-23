@@ -1,3 +1,4 @@
+/*main.css*/
 /* Global design tokens.
    Centralised colour + layout variables for easy theming
    and long-term maintainability. */
@@ -54,3 +55,4 @@ a:hover {
 .muted {
   color: var(--muted);
 }
+/*EOF main.css*/

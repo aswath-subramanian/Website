@@ -1,3 +1,4 @@
+/*components.css*/
 /* =========================================================
    TYPOGRAPHY SYSTEM
    Global text hierarchy and spacing
@@ -11,7 +12,8 @@ h1 {
 }
 
 h2 {
-  font-size: 14px;              /* Section labels */
+  font-size: 18px;              /* Section labels */
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted);
@@ -38,27 +40,24 @@ ul {
   margin-bottom: 24px;
 }
 
-/* Content list styling */
+/* Content lists */
+section ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 24px;
+}
+
 section ul li {
-  margin-bottom: 10px;
-  padding-left: 20px;           /* Space for dash marker */
+  margin-bottom: 14px;
+  padding-left: 20px;
   position: relative;
 }
 
 section ul li::before {
-  content: "–";                /* Subtle dash instead of bullets */
+  content: "→";
   position: absolute;
   left: 0;
   color: var(--muted);
-}
-
-#who ul li {
-  margin-bottom: 12px;
-  padding-left: 8px;
-}
-
-#who ul li::marker {
-  color: var(--accent);
 }
 
 /* =========================================================
@@ -133,7 +132,7 @@ section ul li::before {
    ========================================================= */
 
 .work-item {
-  margin-bottom: 32px;
+  margin-bottom: 48px;
   padding: 24px;
   background: #ffffff;
   border: 1px solid #e5e5e5;
@@ -147,16 +146,25 @@ section ul li::before {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/*Emphasise outcome line 
-.work-item p:last-child {
-  font-weight: 500;             
-}*/
+/* Case title */
+.work-item h3 {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
 
-/* Labels: Failure risk / Intervention / Outcome */
+/* Row layout for label + text */
+.row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+/* Metadata label */
 .label {
-  display: inline-block;
-  width: 90px;
-  font-size: 12px;
+  width: 110px;
+  flex-shrink: 0;
+  font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
   color: var(--muted);
@@ -185,18 +193,19 @@ section ul li::before {
 .contact-item {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
   color: var(--text);
   font-size: 16px;
 }
 
 .contact-item svg {
-  width: 18px;
-  height: 18px;
+  width: 21px;
+  height: 21px;
   fill: var(--muted);
 }
 
 .contact-item:hover svg {
   fill: var(--accent);          /* Hover feedback on icons */
 }
+/*EOF components.css*/

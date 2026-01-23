@@ -133,18 +133,24 @@ section ul li::before {
    ========================================================= */
 
 .work-item {
-  margin-bottom: 48px;
-  padding-left: 16px;
-  border-left: 2px solid transparent; /* Appears on hover */
-}
-
-.work-item p:last-child {
-  font-weight: 500;             /* Emphasise outcome line */
+  margin-bottom: 32px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
 .work-item:hover {
-  border-left: 2px solid var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
+
+/*Emphasise outcome line 
+.work-item p:last-child {
+  font-weight: 500;             
+}*/
 
 /* Labels: Failure risk / Intervention / Outcome */
 .label {

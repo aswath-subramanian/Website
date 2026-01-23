@@ -1,15 +1,16 @@
-/*layout.css*/
-/* Content width limiter.
-   Keeps text readable on all screen sizes. */
+/* layout.css */
+/* =========================================================
+   LAYOUT & PAGE GEOMETRY
+   ========================================================= */
+
+/* Content width limiter */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--space-md);
 }
 
-/* The "document slab".
-   Creates a bounded page inside the browser window,
-   giving the site a physical, editorial feel. */
+/* Document slab */
 .site-frame {
   background: white;
   max-width: 1100px;
@@ -18,31 +19,26 @@
   box-shadow: 0 0 0 1px #e5e5e5;
 }
 
-/* Global section rhythm.
-   Enforces consistent vertical spacing between content blocks. */
+/* Section rhythm */
 section {
-  padding: 80px 0;
+  padding: var(--space-xl) 0;
   border-bottom: 1px solid #e5e5e5;
 }
 
-/* Hero spacing.
-   Extra top padding accounts for fixed navigation bar.
-   scroll-margin-top ensures anchor links land below nav. */
+/* Hero */
 header.hero {
-  padding: 100px 0 104px;
+  padding: calc(var(--space-xl) + 20px) 0 calc(var(--space-xl) + 24px);
   border-bottom: 1px solid #e5e5e5;
   scroll-margin-top: 90px;
 }
 
-/* Footer spacing and alignment */
+/* Footer */
 footer {
   padding: 60px 0;
   text-align: center;
 }
 
-/* Fixed top navigation.
-   Stays visible while scrolling.
-   Slight transparency keeps content visible underneath. */
+/* Fixed navigation */
 .nav {
   position: fixed;
   top: 0;
@@ -53,25 +49,22 @@ footer {
   z-index: 100;
 }
 
-/* Navigation inner layout.
-   Uses flexbox to separate name (left) and links (right). */
+/* Nav layout */
 .nav-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
+  padding: var(--space-sm) var(--space-md);
 }
 
-/* Mobile navigation behaviour.
-   Stacks name and links vertically for narrow screens. */
+/* Mobile nav */
 @media (max-width: 600px) {
   .nav-inner {
     flex-direction: column;
-    gap: 12px;
-    padding: 12px;
+    gap: var(--space-xs);
+    padding: var(--space-xs);
   }
 
-  /* Distribute nav links evenly across width */
   .nav-links {
     width: 100%;
     display: flex;
@@ -79,9 +72,9 @@ footer {
     font-size: 14px;
   }
 
-  /* Remove desktop spacing on mobile */
   .nav-links a {
     margin-left: 0;
   }
 }
-/*EOF layout.css*/
+
+/* EOF layout.css */

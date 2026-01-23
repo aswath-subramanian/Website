@@ -1,54 +1,49 @@
-/*components.css*/
+/* components.css */
 /* =========================================================
    TYPOGRAPHY SYSTEM
-   Global text hierarchy and spacing
    ========================================================= */
 
 h1 {
-  font-size: 32px;              /* Primary headline */
+  font-size: 32px;
   font-weight: 600;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-md);
   line-height: 1.3;
 }
 
 h2 {
-  font-size: 18px;              /* Section labels */
+  font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted);
-  margin-bottom: 32px;
+  margin-bottom: var(--space-lg);
 }
 
 h3 {
-  font-size: 19px;              /* Case study titles */
+  font-size: 19px;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: var(--space-sm);
 }
 
 p {
-  margin-bottom: 16px;          /* Default paragraph rhythm */
+  margin-bottom: var(--space-sm);
 }
 
 /* =========================================================
-   LIST STYLING (CONTENT ONLY)
-   Applies to lists inside sections, not navigation
+   LISTS (CONTENT ONLY)
    ========================================================= */
 
 ul {
   list-style: none;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-md);
 }
 
-/* Content lists */
 section ul {
-  list-style: none;
   padding-left: 0;
-  margin-bottom: 24px;
 }
 
 section ul li {
-  margin-bottom: 14px;
+  margin-bottom: var(--space-sm);
   padding-left: 20px;
   position: relative;
 }
@@ -66,7 +61,7 @@ section ul li::before {
 
 .btn {
   display: inline-block;
-  margin-top: 24px;
+  margin-top: var(--space-md);
   padding: 14px 28px;
   background: var(--text);
   color: white;
@@ -74,14 +69,15 @@ section ul li::before {
   border-radius: 4px;
 }
 
-.btn:hover {
-  background: var(--accent); /* Primary interaction feedback */
-  color: white;   
+.btn:hover,
+.btn:focus-visible {
+  background: var(--accent);
+  color: white;
 }
 
 .jump-link {
   display: block;
-  margin-top: 16px;
+  margin-top: var(--space-sm);
   color: var(--muted);
   text-decoration: none;
 }
@@ -91,14 +87,10 @@ section ul li::before {
    ========================================================= */
 
 .nav-name {
-  font-weight: 600;             /* Your name in header */
+  font-weight: 600;
   text-decoration: none;
 }
 
-/* Navigation reset
-   Removes default list behaviour so nav doesn't inherit
-   content list styling (dashes, spacing, etc.)
-*/
 .nav-links {
   list-style: none;
   display: flex;
@@ -115,11 +107,8 @@ section ul li::before {
   content: none;
 }
 
-/* Navigation link styling
-   Visual behaviour of header links
-*/
 .nav-links a {
-  margin-left: 24px;
+  margin-left: var(--space-md);
   text-decoration: none;
   color: var(--muted);
 }
@@ -133,8 +122,8 @@ section ul li::before {
    ========================================================= */
 
 .work-item {
-  margin-bottom: 48px;
-  padding: 24px;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
   background: #ffffff;
   border: 1px solid #e5e5e5;
   border-radius: 6px;
@@ -147,22 +136,28 @@ section ul li::before {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* Case title */
+/* Case title aligns with content column */
 .work-item h3 {
   font-size: 21px;
   font-weight: 600;
-  margin-bottom: 20px;
-  margin-left: var(--label-width); /* align title with body text column */
+  margin-bottom: var(--space-md);
+  margin-left: var(--label-width);
 }
 
-/* Row layout for label + text */
+/* Label + text rows */
 .row {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 14px;
+  margin-bottom: var(--space-sm);
+  gap: 0;
 }
 
-/* Metadata label */
+/* Text column (flexible) */
+.text {
+  flex: 1;
+}
+
+/* Metadata label (fixed column) */
 .label {
   width: var(--label-width);
   flex-shrink: 0;
@@ -178,7 +173,7 @@ section ul li::before {
 
 .chart img {
   max-width: 100%;
-  margin-top: 24px;
+  margin-top: var(--space-md);
 }
 
 /* =========================================================
@@ -186,16 +181,16 @@ section ul li::before {
    ========================================================= */
 
 .contact-icons {
-  margin-top: 24px;
+  margin-top: var(--space-md);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-xs);
 }
 
 .contact-item {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-xs);
   text-decoration: none;
   color: var(--text);
   font-size: 16px;
@@ -208,6 +203,7 @@ section ul li::before {
 }
 
 .contact-item:hover svg {
-  fill: var(--accent);          /* Hover feedback on icons */
+  fill: var(--accent);
 }
-/*EOF components.css*/
+
+/* EOF components.css */

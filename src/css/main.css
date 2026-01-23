@@ -1,61 +1,72 @@
-/*main.css*/
-/* Global design tokens.
-   Centralised colour + layout variables for easy theming
-   and long-term maintainability. */
+/* main.css */
+/* =========================================================
+   GLOBAL DESIGN TOKENS & BASE RULES
+   ========================================================= */
+
 :root {
-  --bg: #f0f2f5;     /* Global environment (outside the document slab) */
-  --text: #111;     /* Primary text colour */
-  --muted: #666;    /* Secondary / de-emphasised text */
-  --accent: #059669;/* Positive action / highlight colour */
-  --accent-soft: #10B981; /*Secondary accent tone*/
-  --risk: #F59E0B;  /* Reserved for warnings / constraints */
-  --max-width: 730px; /* Ideal reading width for long-form text */
+  /* Environment */
+  --bg: #f0f2f5;
+  --text: #111;
+  --muted: #666;
+
+  /* Accents */
+  --accent: #059669;
+  --accent-soft: #10B981;
+  --risk: #F59E0B;
+
+  /* Layout */
+  --max-width: 730px;
   --label-width: 110px;
+
+  /* Spacing scale */
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 80px;
 }
 
-/* Global reset.
-   Removes browser inconsistencies and ensures
-   all layout calculations are predictable. */
+/* Global reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Native smooth scrolling for anchor links */
+/* Smooth anchor scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Base typography + page environment */
+/* Base typography */
 body {
-  background: var(--bg);   /* Surrounding canvas */
+  background: var(--bg);
   color: var(--text);
   font-family: 'Inter', sans-serif;
-  line-height: 1.6;
   font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 
-  /* Compensate for fixed navigation bar height */
+  /* Offset for fixed nav */
   padding-top: 64px;
 }
 
-/* Global link styling.
-   Keeps links visible but understated. */
+/* Base link styling (neutral by default) */
 a {
   color: var(--text);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-/* Hover state for links */
-a:hover {
+/* Document-style link hover only */
+section a:hover {
   color: var(--accent);
   text-decoration: underline;
 }
 
-/* Utility class for secondary text */
+/* Utility */
 .muted {
   color: var(--muted);
 }
-/*EOF main.css*/
+
+/* EOF main.css */

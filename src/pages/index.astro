@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const gt = (await getCollection('groundtruth')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmj = (await getCollection('fmj')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latestGt = gt[0];
+const latestFmj = fmj[0];
+---
+<Base>
+  <h1>I look for where engineering promises break &mdash; in scale-up, in emissions numbers, in the claims we build systems on.</h1>
+  <p class="lead">Two things live here: focused work on measuring climate superpollutants honestly, and a wider notebook on energy, engineering, and whatever else holds my attention.</p>
+
+  <h2 class="kicker">Ground Truth</h2>
+  <p>Measuring superpollutants honestly &mdash; whether the tonnes we claim to cut are actually real.</p>
+  {latestGt && (
+    <p class="muted">Latest: <a href={`/ground-truth/${latestGt.id}/`}>{latestGt.data.title}</a></p>
+  )}
+
+  <h2 class="kicker">Finding My Joule</h2>
+  <p>A wider notebook &mdash; energy, engineering, process, and tangents. Any register.</p>
+  {latestFmj && (
+    <p class="muted">Latest: <a href={`/finding-my-joule/${latestFmj.id}/`}>{latestFmj.data.title}</a></p>
+  )}
+</Base>

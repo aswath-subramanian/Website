@@ -117,7 +117,7 @@ Semantic HTML, real headings, `<time>` for dates, a skip-to-content link, keyboa
 
 ## 11. Actions / roadmap
 
-1. **Deploy the skeleton** — Cloudflare Pages / Netlify (static, off the aswath-subramanian GitHub account), building from the lockfile (`npm ci && npm run check && npm run build`). Staging URL first; **aswath.nl DNS cutover waits for step 4** so day one has one substantial thing on it.
+1. **Deploy the skeleton** — GitHub Pages via Actions, using GitHub's suggested Astro starter workflow (`.github/workflows/astro.yml`, added through repo Settings → Pages → Source: "GitHub Actions"). **Edit its `node-version` to 24 before the first run** — the starter pins Node 20 and Astro 7 requires ≥22.12. The starter injects `--site`/`--base` from the Pages settings, so the interim `*.github.io/website` URL renders correctly as staging — but its canonicals/feeds point at github.io until the custom domain is set. Serving for real = set aswath.nl as the Pages custom domain + DNS (apex A records → GitHub Pages IPs, enforce HTTPS); **that cutover waits for step 4** so day one has one substantial thing on it.
 2. **Chart island proof-of-concept** — one interactive chart on the N₂O deep dive (emission factor vs. measured) using the §7 custom-element pattern, to validate it end-to-end: data asset, hydration, dark mode, fallback.
 3. **UX polish pass** — remaining typography/spacing refinement on real devices, chart-page layout, anything the staging URL exposes.
 4. **First real content** — the N₂O teardown with data + charts. When it's live, point aswath.nl at the site. This is the launch gate.

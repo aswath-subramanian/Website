@@ -2,16 +2,17 @@
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { isoDate, formatDate } from '../../lib/dates';
+import { url } from '../../lib/url';
 const posts = (await getCollection('fmj')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<Base title="Finding My Joule — Aswath Subramanian" description="A wider notebook on energy, engineering, and tangents.">
+<Base title="Finding My Joule · Aswath Subramanian" description="A wider notebook on energy, engineering, and tangents.">
   <h1>Finding My Joule</h1>
-  <p class="lead">A wider notebook &mdash; energy, engineering, and whatever holds my attention.</p>
+  <p class="lead">A wider notebook: energy, engineering, and whatever holds my attention.</p>
   <p class="muted">Named after a blog I let lapse years ago.</p>
   <ul class="bare" role="list">
     {posts.map((p) => (
       <li class="entry">
-        <a href={`/finding-my-joule/${p.id}/`}>{p.data.title}</a>
+        <a href={url(`/finding-my-joule/${p.id}/`)} style={`view-transition-name: t-${p.id}`}>{p.data.title}</a>
         <time class="date" datetime={isoDate(p.data.date)}>{formatDate(p.data.date)}</time>
       </li>
     ))}

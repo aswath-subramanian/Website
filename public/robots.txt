@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_astro/portrait
 
 Sitemap: https://aswath.nl/sitemap-index.xml

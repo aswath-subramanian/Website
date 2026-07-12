@@ -1,24 +1,75 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { url } from '../lib/url';
+import { projects } from '../data/projects';
+import portrait from '../assets/portrait.jpg';
 const gt = (await getCollection('groundtruth')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const fmj = (await getCollection('fmj')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const latestGt = gt[0];
 const latestFmj = fmj[0];
 ---
-<Base>
-  <h1>I look for where engineering promises break &mdash; in scale-up, in emissions numbers, in the claims we build systems on.</h1>
-  <p class="lead">Two things live here: focused work on measuring climate superpollutants honestly, and a wider notebook on energy, engineering, and whatever else holds my attention.</p>
+<Base wide={true}>
+  <div class="home-grid">
+    <aside class="rail">
+      <Image class="portrait" src={portrait} alt="Portrait of Aswath Subramanian" width={480} height={480} />
+      <p class="rail-name">Aswath Subramanian</p>
+      <p class="rail-role">Engineer: thin-film PV, high-volume manufacturing, and the awkward passage from lab validation to factory floor.</p>
+      <ul class="rail-links">
+        <li><a href="mailto:contact@aswath.nl">contact@aswath.nl</a></li>
+        <li><a href="https://www.linkedin.com/in/aswath-subramanian/">LinkedIn</a></li>
+        <li><a href="https://github.com/aswath-subramanian">GitHub</a></li>
+      </ul>
+    </aside>
 
-  <h2 class="kicker">Ground Truth</h2>
-  <p>Measuring superpollutants honestly &mdash; whether the tonnes we claim to cut are actually real.</p>
-  {latestGt && (
-    <p class="muted">Latest: <a href={`/ground-truth/${latestGt.id}/`}>{latestGt.data.title}</a></p>
-  )}
+    <div>
+      <h1>I look for where engineering promises break: in scale-up, in emissions numbers, in the claims we build systems on.</h1>
 
-  <h2 class="kicker">Finding My Joule</h2>
-  <p>A wider notebook &mdash; energy, engineering, process, and tangents. Any register.</p>
-  {latestFmj && (
-    <p class="muted">Latest: <a href={`/finding-my-joule/${latestFmj.id}/`}>{latestFmj.data.title}</a></p>
-  )}
+      <div class="trace-wrap">
+        <svg viewBox="0 0 640 148" role="img" aria-labelledby="trace-title trace-desc">
+          <title id="trace-title">Measured emissions versus the assumed emission factor</title>
+          <desc id="trace-desc">A schematic time series: sharp measured emission spikes rise far above a flat dashed line representing the assumed emission factor.</desc>
+          <defs>
+            <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+              <path d="M 32 0 L 0 0 0 32" fill="none" stroke="var(--line)" stroke-width="1" />
+            </pattern>
+          </defs>
+          <rect width="640" height="132" fill="url(#grid)" opacity="0.6" />
+          <line x1="0" y1="104" x2="640" y2="104" stroke="var(--muted)" stroke-width="1" stroke-dasharray="6 5" />
+          <polyline class="trace-line" pathLength="1" points="0,116 8,114 16,117 24,113 32,116 40,112 48,117 56,114 64,116 72,111 80,115 88,108 96,88 104,52 112,34 120,46 128,72 136,96 144,108 152,112 160,115 168,112 176,116 184,113 192,117 200,114 208,116 216,112 224,115 232,117 240,113 248,116 256,114 264,117 272,112 280,108 288,90 296,70 304,62 312,68 320,84 328,100 336,110 344,114 352,112 360,116 368,113 376,117 384,114 392,116 400,112 408,115 416,117 424,113 432,116 440,114 448,112 456,110 464,98 472,60 480,36 488,28 496,34 504,48 512,60 520,72 528,84 536,94 544,102 552,108 560,112 568,115 576,113 584,116 592,114 600,117 608,113 616,115 624,114 640,115" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" />
+          <line x1="0" y1="132" x2="640" y2="132" stroke="var(--line)" stroke-width="1" />
+          <text x="8" y="26" fill="var(--accent)" style="font-family:var(--mono);font-size:10.5px">measured, 2-min resolution</text>
+          <text x="632" y="97" text-anchor="end" fill="var(--muted)" style="font-family:var(--mono);font-size:10.5px">assumed emission factor</text>
+        </svg>
+        <p class="trace-cap">the gap this site is about (schematic): episodic measured flux vs. a flat assumed factor</p>
+      </div>
+
+      <div>
+        <h2 class="kicker">Ground Truth</h2>
+        <p>Engineering and climate claims, put next to measured reality: whether the numbers we build on are real.</p>
+        {latestGt && (
+          <p class="muted">Latest: <a href={url(`/ground-truth/${latestGt.id}/`)} style={`view-transition-name: t-${latestGt.id}`}>{latestGt.data.title}</a></p>
+        )}
+
+        <h2 class="kicker">Finding My Joule</h2>
+        <p>A wider notebook: energy, engineering, process, and tangents. Any register.</p>
+        {latestFmj && (
+          <p class="muted">Latest: <a href={url(`/finding-my-joule/${latestFmj.id}/`)} style={`view-transition-name: t-${latestFmj.id}`}>{latestFmj.data.title}</a></p>
+        )}
+
+        {projects.length > 0 && (
+          <>
+            <h2 class="kicker">Projects</h2>
+            {projects.map((p) => (
+              <div class="proj">
+                <p class="proj-name"><a href={p.href}>{p.name}</a>{p.tag && <span class="proj-tag">{p.tag}</span>}</p>
+                <p class="proj-desc">{p.desc}</p>
+              </div>
+            ))}
+          </>
+        )}
+      </div>
+    </div>
+  </div>
 </Base>

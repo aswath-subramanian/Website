@@ -2,20 +2,21 @@
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { isoDate, formatDate } from '../../lib/dates';
+import { url } from '../../lib/url';
 const entries = (await getCollection('groundtruth')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<Base title="Ground Truth — Aswath Subramanian" description="Measuring climate superpollutants honestly.">
+<Base title="Ground Truth · Aswath Subramanian" description="Engineering and climate claims, tested against measured reality.">
   <h1>Ground Truth</h1>
-  <p class="lead">Measuring superpollutants honestly.</p>
-  <p>Most of what we "know" about superpollutant emissions &mdash; nitrous oxide, methane, refrigerants &mdash; isn't measured. It's assumed: a single emission factor standing in for a number that swings with season, load, and weather. The gap between the tonne we claim and the tonne that's real is where abatement and carbon credits quietly fail. This is where I take that apart, one gas at a time.</p>
+  <p class="lead">Claims, tested against measured reality.</p>
+  <p>Engineering runs on claimed numbers: emission factors, nameplate capacities, promised yields, model outputs. A surprising share of them were never measured; they're assumed, inherited, and built on. This is where I put the claim next to the data, quantify the gap, and keep the error bars. Current series: superpollutant emissions, and whether the tonnes we claim to cut are real.</p>
 
   <h2 class="kicker">Deep dives</h2>
   <ul class="bare" role="list">
     {entries.map((e) => (
       <li class="entry">
-        <a href={`/ground-truth/${e.id}/`}>{e.data.title}</a>
+        <a href={url(`/ground-truth/${e.id}/`)} style={`view-transition-name: t-${e.id}`}>{e.data.title}</a>
         {e.data.status
-          ? <span class="date">{e.data.status}</span>
+          ? <span class="date status">{e.data.status}</span>
           : <time class="date" datetime={isoDate(e.data.date)}>{formatDate(e.data.date)}</time>}
       </li>
     ))}

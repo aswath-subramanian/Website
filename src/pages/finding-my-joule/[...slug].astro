@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import ShareRow from '../../components/ShareRow.astro';
 import { getCollection, render } from 'astro:content';
 import { isoDate, formatDate } from '../../lib/dates';
 
@@ -13,8 +14,9 @@ const { Content } = await render(post);
 ---
 <Base title={post.data.title} description={post.data.description} type="article">
   <article class="note">
-    <h1>{post.data.title}</h1>
+    <h1 style={`view-transition-name: t-${post.id}`}>{post.data.title}</h1>
     <span class="date"><time datetime={isoDate(post.data.date)}>{formatDate(post.data.date)}</time></span>
     <Content />
+    <ShareRow title={post.data.title} />
   </article>
 </Base>

@@ -2,7 +2,6 @@
 title: "Is the N₂O number even real?"
 date: 2026-07-10
 description: "Why wastewater and agricultural nitrous-oxide emissions are assumed, not measured, and what an honest estimate would take."
-status: "in progress"
 ---
 
 Nitrous oxide warms the planet roughly 270× as hard as CO₂, and most of it (from wastewater plants and farm soil) is never actually measured. It's *assumed*: a single IPCC emission factor, a fixed fraction of nitrogen load, standing in for a number that swings by close to an order of magnitude with season, load, temperature, and rain.

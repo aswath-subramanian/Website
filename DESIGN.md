@@ -70,19 +70,19 @@ An instrument panel for reading — a lab notebook, not a blog: a single reading
   - Light: ink `#1a1a1a` on neutral paper `#fafafa`, muted `#6f6f6f` (4.8:1), hairline `#e4e4e4`.
   - Dark (`prefers-color-scheme`, slightly cool: instruments are dark-native): ink `#e5e7ea` on `#141516` (14.8:1), muted `#a2a4a8` (7.3:1), hairline `#303236`.
   - **Muted is for metadata only** (dates, status, nav, footer, captions) — never for leads, theses, or anything the reader must read.
-  - **One accent, drafting blue** (the ink of technical drawings): light `#2d4f9e` (7.4:1), dark `#8aa5e8` (7.5:1). **The accent is semantic: it marks evidence.** Link underlines, measured data (the trace, chart primaries), live status. Never decoration.
+  - **One accent, drafting blue** (the ink of technical drawings): light `#2d4f9e` (7.4:1), dark `#8aa5e8` (7.5:1). **The accent is semantic: it marks evidence.** Link underlines, measured data (chart primaries), live status. Never decoration.
 - **Headings:** a real scale that makes raw markdown safe by default (h1 30 / h2 22 / h3 19 / h4 17, roughly 2× space above vs below). The uppercase label style is an explicit `.kicker` class used deliberately on hub pages, never the default meaning of `h2`.
 - **Links:** in-prose links must be findable at rest: accent underline (evidence, per the accent rule), ink underline on hover.
 - **The tagline is deliberately the home h1.** The one loud moment on the site; don't "fix" it.
 - **Rhythm:** big vertical spacing between sections; small, consistent spacing within. Let it breathe.
 - **Decoration:** hairline rules, not boxes/cards/shadows. No gradients, no hero imagery, no icons-as-ornament.
-- **Signature:** the home hero draws the site's thesis as data: an inline-SVG schematic trace of episodic measured flux (accent) against the flat dashed assumed factor, on a faint plotting grid. Zero JS, themed by the same tokens, labelled honestly as a schematic. The favicon is one spike of it. Nothing else gets a flourish.
-- **Motion:** one orchestrated moment only: on first paint the trace draws itself (~1.1s). Page navigations morph via **browser-native cross-document view transitions** (`@view-transition`, pure CSS, no router JS): nav and footer hold still, entry titles glide into article titles. Nothing loops, nothing staggers in, and `prefers-reduced-motion` collapses all of it.
+- **Signature:** the spike favicon and the accent-as-evidence rule carry the identity; data gets drawn where it is real (chart islands in deep dives), not as a hero graphic. (A home hero schematic was tried and removed at sign-off, 2026-07-11.) Nothing gets a flourish.
+- **Motion:** page navigations morph via **browser-native cross-document view transitions** (`@view-transition`, pure CSS, no router JS): nav and footer hold still, entry titles glide into article titles. Nothing loops, nothing staggers in, and `prefers-reduced-motion` collapses all of it.
 
 ## 6. Components & patterns
 
 - **Nav:** name (→ home) on the left, three quiet text links right: Ground Truth · Finding My Joule · About. No hamburger theatrics; wrap gracefully on mobile.
-- **Home:** identity rail (portrait, name, one-line role, contact · LinkedIn · GitHub) beside the content column — thesis h1, the schematic assumed-vs-measured trace, the two section blocks with latest entries, and a curated **Projects** list (`src/data/projects.ts`, rendered at build; never client-side embeds, per principle 3). Nothing else.
+- **Home:** identity rail (portrait, name, one-line role, contact · LinkedIn · GitHub) beside the content column: thesis h1, the two section blocks with latest entries, and a curated **Projects** list (`src/data/projects.ts`, rendered at build; never client-side embeds, per principle 3). Nothing else.
 - **Section index:** a plain list of entries — title left, date (or status) right, hairline between. No excerpts, no thumbnails.
 - **Article / deep dive:** title, date/status, then prose. Comfortable measure, clear headings. Dates are `<time datetime>` elements, human-readable ("20 Jan 2026"), one shared formatter.
 - **Markdown must be safe by default:** tables (scroll within the column, never break it), code blocks, images, blockquotes, `hr`, captions — all styled in the slab's language.

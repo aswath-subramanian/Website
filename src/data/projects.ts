@@ -5,7 +5,7 @@ export type Project = {
   tag?: string;
 };
 
-// Curated by hand, rendered at build time — no reader-side GitHub requests.
+// Curated by hand, rendered at build time: no reader-side GitHub requests.
 export const projects: Project[] = [
   {
     name: 'aswath.nl',
